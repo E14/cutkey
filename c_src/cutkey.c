@@ -125,8 +125,8 @@ static ErlDrvSSizeT call(ErlDrvData edd, unsigned int cmd, char *buf,
 			 ErlDrvSizeT len, char **rbuf, ErlDrvSizeT rlen,
 			 unsigned int *flags) {
   ck_drv_t* dd = (ck_drv_t*) edd;
-  int version, out_len, index, rindex, errno;
-  ei_term tuple, ref, bits, e;
+  int version, out_len, index, rindex, errno, arity;
+  ei_term ref, bits, e;
   char* out_atom_text;
   out_len = 0;
   index = 0;
@@ -137,8 +137,7 @@ static ErlDrvSSizeT call(ErlDrvData edd, unsigned int cmd, char *buf,
   ei_decode_version(buf, &index, &version);
   if (cmd == CUTKEY_CMD_RSA) {
     errno = CUTKEY_ERR_ARG;
-    ei_decode_ei_term(buf, &index, &tuple);
-    if (!tuple.ei_type == ERL_TUPLE || tuple.arity != 3) {
+    if (ei_decode_tuple_header(buf, &index, &arity) != 0 || arity != 3) {
       goto error;
     }
     ei_decode_ei_term(buf, &index, &ref);
