@@ -89,7 +89,7 @@ static ErlDrvEntry cutkey_driver_entry = {
     NULL,                             /* output */
     NULL,                             /* ready_input */
     NULL,                             /* ready_output */
-    "cutkey_drv",                     /* the name of the driver */
+    "cutkey",                         /* the name of the driver */
     NULL,                             /* finish */
     NULL,                             /* handle */
     NULL,                             /* control */

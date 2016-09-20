@@ -10,3 +10,5 @@
 .DS_Store
 deps/
 .eunit/
+_build
+

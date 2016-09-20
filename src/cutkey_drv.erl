@@ -22,7 +22,7 @@
 
 -export([load/0, open/0, close/1, gen_rsa/4]).
 
--define(DRIVER_NAME, ?MODULE_STRING).
+-define(DRIVER_NAME, cutkey).
 
 -define(DRV_CMD_INFO, 0).
 -define(DRV_CMD_RSA,  1).
